@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+void greet(const char *name)
+{
+	char buf[8];
+	strcpy(buf, name); // 潛在緩衝區溢位
+	printf("Hello, %s!\n", buf);
+}
+
 void memory_leak_example()
 {
 	int *ptr = malloc(sizeof(int) * 10);
@@ -48,5 +56,6 @@ int main()
 	uninitialized_variable_example();
 	null_pointer_example();
 	unchecked_return_example();
+	greet("PerplexityUser123456"); // 傳入超過 8 字元的字串
 	return 0;
 }
